@@ -1,0 +1,23 @@
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        # freq = [0] * 26
+        # for c in words[0]:
+        #     freq[ord(c) - ord("a")] += 1
+        cnt = Counter(words[0])
+        for w in words:
+            cur_cnt = Counter(w)
+            for c in cnt:
+                cnt[c] = min(cnt[c], cur_cnt[c])
+        res = []
+        for c in cnt:
+            # if cnt[c] > 0:
+            #     res.append(c)
+            for i in range(cnt[c]):
+                res.append(c)
+        return res
+        
+        
+
+
+
+
